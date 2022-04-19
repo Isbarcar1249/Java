@@ -1,3 +1,8 @@
 public class Main{
-   hola
+  public static void main(String[] args){
+
+    Persona miPersona = new Persona();
+    System.out.println(miPersona);
+
+  }
 }
