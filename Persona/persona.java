@@ -3,10 +3,15 @@ public class Persona{
   private String dni;
 
   //Constructor
+  public Persona(String nombre, String dni){
+    this.nombre = nombre;
+    this.dni =dni;
+  }
   public Persona(){
     this.nombre ="Ismael";
     this.dni ="12344334t";
   }
+
   public void setNombre(String nombre){
     this.nombre = nombre;
   }
