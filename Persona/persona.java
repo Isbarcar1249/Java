@@ -1,6 +1,6 @@
 public class Persona{
-  private String nombre;
-  private String dni;
+  protected String nombre;
+  protected String dni;
 
   //Constructor
   public Persona(String nombre, String dni){
@@ -11,7 +11,10 @@ public class Persona{
     this.nombre ="Ismael";
     this.dni ="12344334t";
   }
-
+  public Persona(Persona persona){
+    this.nombre = persona.nombre;
+    this.dni = persona.dni;
+  }
   public void setNombre(String nombre){
     this.nombre = nombre;
   }
