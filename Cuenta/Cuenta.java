@@ -16,16 +16,16 @@ public class Cuenta{
     this.cantidad=cantidad;
   }
   //gets y sets
-  void setTitular(String titular){
+  public void setTitular(String titular){
     this.titular=titular;
   }
-  void setCantidad(double cantidad){
+  public void setCantidad(double cantidad){
     this.cantidad=cantidad;
   }
-  String getTitular(){
+  public String getTitular(){
     return this.titular;
   }
-  Double getCantidad(){
+public  Double getCantidad(){
     return this.cantidad;
   }
   public String toString(){
@@ -33,7 +33,7 @@ public class Cuenta{
   }
   //metodos
 
-  boolean Ingresar(double cuantia){
+  public boolean Ingresar(double cuantia){
     boolean cuentaValida=false;
      if (cuantia>0){
         this.cantidad+=cuantia;
@@ -41,7 +41,7 @@ public class Cuenta{
       }
       return cuentaValida;
   }
-  boolean Retirar(double cuantia){
+  public boolean Retirar(double cuantia){
     boolean retiroValido=false;
     if (cuantia<=this.cantidad && cuantia>0){
       this.cantidad-=cuantia;
