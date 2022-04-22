@@ -3,6 +3,7 @@ public class Main{
 
     Persona miPersona = new Persona();
     Persona miPersona2 = new Persona("Angelito","12344334t");
+    Profesor miProfesor = new Profesor();
     System.out.println(miPersona);
     miPersona.setNombre("Pepe");
     miPersona.setDni("77376275t");
@@ -12,5 +13,8 @@ public class Main{
     System.out.println(miPersona.getDni());
 
     System.out.println(miPersona2);
+    System.out.println();
+    System.out.println(miProfesor);
+
   }
 }
