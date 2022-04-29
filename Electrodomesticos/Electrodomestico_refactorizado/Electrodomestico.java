@@ -66,13 +66,13 @@ public class Electrodomestico{
   public void setColor(String color){
 
     this.color = COLOR;
-    if (comprobacion(color,colores)==true){
+    if (comprobacion(color,colores)!=0){
       this.color = color;
     }
   }
   public void setConsumoEnergetico(String consumoEnergetico){
     this.consumoEnergetico = CONSUMO;
-    if (comprobacion(consumoEnergetico,codigos)==true){
+    if (comprobacion(consumoEnergetico,codigos)!=0){
       this.consumoEnergetico= consumoEnergetico;
     }
   }
@@ -93,15 +93,19 @@ public class Electrodomestico{
   }
 
 
-  private boolean comprobacion(String codiguito,String lista[]){
+  private int comprobacion(String codiguito,String lista[]){
     boolean encontrado = false;
     codiguito=codiguito.toUpperCase();
+    int posicion=0;
     for (int i = 0 ; i < lista.length && !encontrado ; i++){
       if (lista[i].equals(codiguito)){
         encontrado = true;
+        posicion=i;
+
       }
+
     }
-    return encontrado;
+    return posicion;
 
   }
 
@@ -121,7 +125,8 @@ public class Electrodomestico{
     |0|20|40|60|80|100|120|140|
     */
     // hemos mejorado comprobarCodigoEnergetico() para que devuelva la posición.
-    int posicion = comprobarCodigoEnergetico(this.consumoEnergetico);
+    int posicion = comprobacion(this.consumoEnergetico,codigos);
+    
     return posicion*20;
   }
   private double extraColor(){
