@@ -27,8 +27,8 @@ public class Main {
     double precioTotal, precioPorPersona,recaudacion=0;
     boolean numPersonasValido = false;
     int numeroHabitaciones = Albergue.SIMPLE.getDisponibles()+Albergue.DOBLE.getDisponibles()+Albergue.TRIPLE.getDisponibles()+Albergue.MULTIPLE.getDisponibles();
-
-  while(numeroHabitaciones>0){
+    String masReservas="SI";
+  while(numeroHabitaciones>0 && masReservas=="SI"){
     System.out.println("Numero de habitaciones disponibles--> "+numeroHabitaciones);
    numPersonasValido = false;
     while(!numPersonasValido){
@@ -54,6 +54,8 @@ public class Main {
     precioPorPersona = habitacion.precioPorPersona(numPersonas,precioTotal);
     System.out.println("El precio por persona es de " + precioPorPersona + " euros.");
     System.out.println("Recaudacion total por el momento en lo que va de reservas -->"+ recaudacion+" euros.");
+    System.out.print("Quedan mas reservas por hacer SI/NO ");
+    masReservas=sc.nextLine();
     /*if (habitacion.getDisponibles() == 0){
       System.out.println("Hemos cometido un error, toma descuento (estas son las opciones): ");
       solucionAlternativa(numPersonas);
