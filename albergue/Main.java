@@ -28,27 +28,53 @@ public class Main {
     boolean numPersonasValido = false;
     int numeroHabitaciones = Albergue.SIMPLE.getDisponibles()+Albergue.DOBLE.getDisponibles()+Albergue.TRIPLE.getDisponibles()+Albergue.MULTIPLE.getDisponibles();
     String masReservas="SI";
+
   while(numeroHabitaciones>0 && masReservas.equals("SI")){
     System.out.println("Numero de habitaciones disponibles--> "+numeroHabitaciones);
    numPersonasValido = false;
     while(!numPersonasValido){
+      try{
       System.out.print("Indica el tipo de habitacion que desea: ");
       tipoHabitacion = sc.nextLine();
       habitacion = Albergue.valueOf(tipoHabitacion);
+      }
+      catch(Exception e){
+        System.out.println("Tipo de habitacion invalido, las que hay son SIMPLE/DOBLE/TRIPLE/MULTIPLE");
+        tipoHabitacion = sc.nextLine();
+        habitacion = Albergue.valueOf(tipoHabitacion);
+      }
+      try{
       System.out.print("Indica el numero de personas: ");
       numPersonas = sc.nextInt();
       sc.nextLine(); // Limpiamos el buffer.
       //System.out.println(" -- Comprobar que el numero de personas es valido -- ");
-      numPersonasValido = habitacion.numPersonasValido(numPersonas);
-    }
+
+      numPersonasValido = habitacion.numPersonasValido(numPersonas);}
+      catch(Exception e){
+        sc.nextLine();
+        System.out.println("Numero de personas invalido quiero personas enteras gracias ");
+        numPersonas = sc.nextInt();
+        sc.nextLine();
+        numPersonasValido = habitacion.numPersonasValido(numPersonas);}
+      }
+
     numeroHabitaciones--;
 
+    try{
     System.out.print("Indica el numero de noches: ");
     numNoches = sc.nextInt();
     sc.nextLine(); // Limpiamos el buffer
     //System.out.println(" -- Cuanto vale la habitacion en total -- ");
     precioTotal = habitacion.precioTotal(numNoches);
-    recaudacion+=precioTotal;
+    recaudacion+=precioTotal;}
+    catch(Exception e){
+    sc.nextLine();
+    System.out.print("Indica el numero de noches enteras: ");
+    numNoches = sc.nextInt();
+    sc.nextLine(); // Limpiamos el buffer
+    //System.out.println(" -- Cuanto vale la habitacion en total -- ");
+    precioTotal = habitacion.precioTotal(numNoches);
+    recaudacion+=precioTotal;}
     System.out.println("El precio total es de " + precioTotal + " euros.");
     //System.out.println(" -- Cuanto vale la habitacion en total por persona -- ");
     precioPorPersona = habitacion.precioPorPersona(numPersonas,precioTotal);
