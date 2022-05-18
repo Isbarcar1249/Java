@@ -1,39 +1,51 @@
-
 public enum Albergue{
-  SIMPLES(1,50),
-  DOBLES(2,80),
-  TRIPLES(3,100),
-  MULTIPLES(6,150);
+  SIMPLE(1,50,2),
+  DOBLE(2,80,4),
+  TRIPLE(3,100,0),
+  MULTIPLE(6,150,4);
 
-  private int plazas;
+  private int personas;
   private double precio;
+  private int disponibles;
 
-  Albergue(int plazas, double precio){
-    this.plazas = plazas;
+  Albergue(int personas, double precio, int disponibles){
+    this.personas = personas;
     this.precio = precio;
+    this.disponibles = disponibles;
   }
-  
-  public int getPlazas(){
-    return this.plazas;
+
+  public int getPersonas(){
+    return this.personas;
   }
   public double getPrecio(){
     return this.precio;
   }
-  void setPrecio(double precio){
-    this.precio = precio;
-  }
-  void setPlazas(int plazas){
-    this.plazas = plazas;
-  }
-  public String comprobarHab(String habitacion,int personas){
-    String respuesta="habitacion Correcta";
-    if(this.plazas<=personas){
-      respuesta ="Necesita habitacion superior";
-    }
-    return respuesta;
-  }
-  public double precioFinal(int noches){
-    return this.precio*noches;
+  public int getDisponibles(){
+    return this.disponibles;
   }
 
+  // setPersona y setPrecio no son necesarios para nuestro código.
+  /*public void setPersonas(int personas){
+    this.personas = personas;
   }
+  public void setPrecio(double precio){
+    this.precio = precio;
+  }*/
+  public void setDisponibles(int disponibles){
+    this.disponibles = disponibles;
+  }
+
+  public boolean numPersonasValido(int numPersonas){
+    return numPersonas <= this.personas;
+  }
+  public double precioTotal(int numNoches){
+    return numNoches*this.precio;
+  }
+  public double precioPorPersona(int numPersonas, double precioTotal){
+    return precioTotal/numPersonas;
+  }
+  public double precioPorPersona(int numPersonas, int numNoches){
+    double precioTotal = this.precioTotal(numNoches);
+    return precioTotal/numPersonas;
+  }
+}
