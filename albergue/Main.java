@@ -28,7 +28,7 @@ public class Main {
     boolean numPersonasValido = false;
     int numeroHabitaciones = Albergue.SIMPLE.getDisponibles()+Albergue.DOBLE.getDisponibles()+Albergue.TRIPLE.getDisponibles()+Albergue.MULTIPLE.getDisponibles();
     String masReservas="SI";
-  while(numeroHabitaciones>0 && masReservas=="SI"){
+  while(numeroHabitaciones>0 && masReservas.equals("SI")){
     System.out.println("Numero de habitaciones disponibles--> "+numeroHabitaciones);
    numPersonasValido = false;
     while(!numPersonasValido){
